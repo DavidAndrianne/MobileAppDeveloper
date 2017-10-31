@@ -1,0 +1,15 @@
+<div class="row app-container" style="min-height: 100px">
+    <div *ngFor="let app of apps" class="col-xs-1">
+        <button *ngIf="app.isUnlocked" 
+                [disabled]="app.cost > codePower" 
+                [ngClass]="{'appBtnDisabled':app.cost > codePower}" 
+                style="min-width: 100px; min-height: 100px" 
+                [ngStyle]="{'background': 'url(/assets/MobileAppThumbnails/'+app.thumbnailUrl+')'}" 
+                (click)="develop(app)" 
+                title="Develop a {{app.name}} clone (income: $ {{app.income}})">{{(codePower / app.cost * 100).toFixed(2)}} %</button>
+    </div>
+</div>
+<div class="console">
+    <h2>Write your app below <span class="glyphicon glyphicon-question-sign" title="try typing something... ;D"></span></h2>
+    <textarea style="min-width: 300px; min-height: 200px" disabled (onKeyUp)="writeCode()">{{codeToShow}}</textarea>
+</div>
