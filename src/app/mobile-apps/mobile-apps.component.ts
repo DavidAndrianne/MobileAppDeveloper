@@ -7,7 +7,7 @@ import { ProgressionTracker } from 'app/domain/progression-tracker';
   styleUrls: ['./mobile-apps.component.css']
 })
 export class MobileAppsComponent implements OnInit {
-  apps = [<MobileApp>{name: 'Snake', thumbnailUrl:'Snake.png', income: 1, cost: 20},
+  apps = <MobileApp[]>[<MobileApp>{name: 'Snake', thumbnailUrl:'Snake.png', income: 1, cost: 20},
   <MobileApp>{name: 'Hearthstone', thumbnailUrl:'Hearthstone.jpg', income: 11, cost: 200},
   <MobileApp>{name: 'Perudo', thumbnailUrl:'perudo.png', income: 58, cost: 1000}];
 
@@ -17,10 +17,12 @@ export class MobileAppsComponent implements OnInit {
   @Input() developerIncome: number;
   @Output() getIncomeChange = new EventEmitter<MobileApp>();
 
+  @Output() attemptToPublishApp = new EventEmitter<number>();
+
   constructor() { }
   
   ngOnInit() {
-      this.apps[0].isUnlocked = true;
+      this.apps[0].isUnlocked = true; // The first app is always unlocked by default
   }
   
   develop(app) {
@@ -54,8 +56,8 @@ console.log("mobile-apps-component", "writecode key:", event);
     if(this.codeToShow.length > 300)
         this.codeToShow = this.codeToShow.substr(this.codeToShow.length - this.codeChars, this.codeChars);
 
-    if(this.progressionTracker.keyboardUpgradeLevel >= 1 && event.shiftKey && event.keyCode <= 49 && 51 >= event.keyCode) 
-        console.log("buy app:"+(event.keyCode - 48));
+    if(this.progressionTracker.keyboardUpgradeLevel >= 1 && event.shiftKey && 1 <= +event.key && +event.key <= 3) 
+        this.attemptToPublishApp.emit(+event.key -1);
   }
   
   codeToShow : string;

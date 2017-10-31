@@ -14,7 +14,7 @@ export class UpgradesComponent implements OnInit {
   @Input()
   balance : number;
   @Output()
-  unlockUpgrade : EventEmitter<Upgrade> = new EventEmitter<Upgrade>();
+  unlockUpgrade = new EventEmitter<Upgrade>();
 
   upgrades : Upgrade[] = [
     // Keyboard

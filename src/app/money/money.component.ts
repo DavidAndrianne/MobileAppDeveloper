@@ -32,7 +32,7 @@ export class MoneyComponent implements OnInit {
   progressionTracker : ProgressionTracker;
   
   @Output()
-  addIncome : EventEmitter<number> = new EventEmitter<number>();
+  addIncome = new EventEmitter<number>();
   elapsedSec : number = 0;
   incomeEverySecondsBase : number = 10;
   get incomeEverySeconds() : number{

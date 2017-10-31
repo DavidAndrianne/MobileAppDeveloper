@@ -4,7 +4,7 @@
     <h1>
       Welcome to {{title}}!
     </h1>
-    <alert *ngFor="let alertMessage of alertMessages" type="{{alertMessage.type}}">{{alertMessage.text}}}</alert>
+    <alert *ngFor="let alertMessage of alertMessages" type="{{alertMessage.type}}" (click)="handleClickAlert(alertMessage)">{{alertMessage.text}}</alert>
   </div>
   <div class="row stats">
     <div class="col-xs-3">
@@ -13,7 +13,7 @@
   </div>
   <div class="row development">
     <!-- angular app anchor -->
-    <mobile-apps [developerIncome]="income" (getIncomeChange)="mobileAppCallback($event)" [(progressionTracker)]="progressionTracker"></mobile-apps>
+    <mobile-apps [developerIncome]="income" (getIncomeChange)="mobileAppCallback($event)" (attemptToPublishApp)="attemptToPublishAppCallback($event)" [(progressionTracker)]="progressionTracker"></mobile-apps>
   </div>
   <div class="row upgrades">
       <upgrades [(balance)]="balance" (unlockUpgrade)="unlockUpgradeCallback($event)" [(progressionTracker)]="progressionTracker"></upgrades>
