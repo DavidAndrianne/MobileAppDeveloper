@@ -5,8 +5,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 # TODO:
 1. Timer to add passive income [OK]
 2. Button to "write code" [OK]
-3. Keyboard buy shortcut upgrade
-4. Keyboard auto-buy feature
+3. Keyboard publish shortcut upgrade [OK]
+4. Keyboard auto-publish feature [OK]
 5. Konami shortcut : unlock twitch minigame
 6. Snake sample
 7. Hearthstone sample

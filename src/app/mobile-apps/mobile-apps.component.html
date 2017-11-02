@@ -1,13 +1,17 @@
 <h2>Publish apps <span class="glyphicon glyphicon-question-sign" title="Publishing apps is the action of converting code into apps, which provides you with passive income"></span></h2>
 <div class="row app-container" style="min-height: 100px">
     <div *ngFor="let app of apps" class="col-xs-1">
-        <button *ngIf="app.isUnlocked" 
-                [disabled]="app.cost > codePower" 
+        <div *ngIf="app.isUnlocked">
+            <button [disabled]="app.cost > codePower" 
                 [ngClass]="{'appBtnDisabled':app.cost > codePower}" 
                 style="min-width: 100px; min-height: 100px" 
                 [ngStyle]="{'background': 'url(/assets/MobileAppThumbnails/'+app.thumbnailUrl+')'}" 
                 (click)="develop(app)" 
                 title="Develop a {{app.name}} clone (income: $ {{app.income}})">{{(codePower / app.cost * 100).toFixed(2)}} %</button>
+            <input *ngIf="this.progressionTracker.shortcutUpgradeLevel >= 3" type="checkbox" 
+                    title="autopublish {{app.name}}" (click)="setAutoPublishApp(app)" [(ngModel)]="app.isAutoPublished"/>
+            <!-- <pre>'{{app.isAutoPublished}}'</pre> -->
+        </div>
     </div>
 </div>
 <div class="console">

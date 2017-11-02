@@ -7,9 +7,9 @@ import { ProgressionTracker } from 'app/domain/progression-tracker';
   styleUrls: ['./mobile-apps.component.css']
 })
 export class MobileAppsComponent implements OnInit {
-  apps = <MobileApp[]>[<MobileApp>{name: 'Snake', thumbnailUrl:'Snake.png', income: 1, cost: 20},
-  <MobileApp>{name: 'Hearthstone', thumbnailUrl:'Hearthstone.jpg', income: 11, cost: 200},
-  <MobileApp>{name: 'Perudo', thumbnailUrl:'perudo.png', income: 58, cost: 1000}];
+  apps = <MobileApp[]>[<MobileApp>{name: 'Snake', thumbnailUrl:'Snake.png', income: 1, cost: 20, isAutoPublished: false},
+  <MobileApp>{name: 'Hearthstone', thumbnailUrl:'Hearthstone.jpg', income: 11, cost: 200, isAutoPublished: false},
+  <MobileApp>{name: 'Perudo', thumbnailUrl:'perudo.png', income: 58, cost: 1000, isAutoPublished: false}];
 
   @Input()
   progressionTracker : ProgressionTracker;
@@ -38,7 +38,7 @@ export class MobileAppsComponent implements OnInit {
   // it as a mobileApp
   @HostListener('document:keyup', ['$event'])
   writeCode(event : KeyboardEvent) {
-console.log("mobile-apps-component", "writecode key:", event);
+    // console.log("mobile-apps-component", "writecode key:", event);
 
     // Add "code power" (lines of code written to turn into an app)
     let power = 1;
@@ -56,8 +56,22 @@ console.log("mobile-apps-component", "writecode key:", event);
     if(this.codeToShow.length > 300)
         this.codeToShow = this.codeToShow.substr(this.codeToShow.length - this.codeChars, this.codeChars);
 
-    if(this.progressionTracker.keyboardUpgradeLevel >= 1 && event.shiftKey && 1 <= +event.key && +event.key <= 3) 
+
+    if(this.progressionTracker.shortcutUpgradeLevel >= 1 && event.shiftKey && 1 <= +event.key && +event.key <= 3) 
         this.attemptToPublishApp.emit(+event.key -1);
+    else { // if Shortcut Level 3+ & autopublish is on : auto-publish app
+        
+        let autoPublishApp = this.apps.find(app => {return app.isAutoPublished;});4
+        console.log("app to autoPublish : ", autoPublishApp);
+        if(this.progressionTracker.shortcutUpgradeLevel >= 3 && autoPublishApp && autoPublishApp.cost <= this.codePower)
+            this.attemptToPublishApp.emit(this.apps.indexOf(autoPublishApp));
+    }
+  }
+
+  setAutoPublishApp(app: MobileApp){
+      this.apps.filter(app => app.isAutoPublished)
+               .forEach(app => app.isAutoPublished = false);
+      app.isAutoPublished = true;
   }
   
   codeToShow : string;

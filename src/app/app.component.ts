@@ -14,7 +14,7 @@ import { MobileAppsComponent } from 'app/mobile-apps/mobile-apps.component';
 export class AppComponent {
   title = 'Mobile developer';
   income = 0;
-  balance = 20000;
+  balance = 50000;
   alertMessages : AlertMessage[] = [];
   progressionTracker : ProgressionTracker = <ProgressionTracker>{developpedApps : [], keyboardUpgradeLevel: 0, addsUpgradeLevel: 0, contractUpgradeLevel: 0, shortcutUpgradeLevel: 0};
 
@@ -33,11 +33,11 @@ export class AppComponent {
     // console.log("attemptToPublishCallback", app);
     if(app){
       if(app.isUnlocked){
-        if(app.cost < this.balance){
-          this.balance -= app.cost;
-          this.mobileAppCallback(app);
+        if(app.cost <= this.mobileAppsComponent.codePower){
+          this.mobileAppsComponent.develop(app);
+          this.showInfo("You published a "+app.name+" clone!");
         } else {
-          this.showWarning("Attempted to publish app "+app.name+" but lacked funding!")
+          this.showWarning("Attempted to publish app "+app.name+" but insufficient code has been written!")
         }
       } else {
        this.showWarning("Attempted to publish app "+app.name+" but this app is not yet unlocked! Publish earlier apps!"); 
@@ -71,11 +71,12 @@ export class AppComponent {
     }
   }
 
+  //region alerts
   showInfo(message : string){ this.showAlert(<AlertMessage>{text: message, type: "info"})}
+  showSuccess(message : string){ this.showAlert(<AlertMessage>{text: message, type: "success"})}
   showWarning(message : string){ this.showAlert(<AlertMessage>{text: message, type: "warning"})}
   showError(message : string){ this.showAlert(<AlertMessage>{text: message, type: "danger"})}
   
-
   showAlert(alert: AlertMessage){
     this.alertMessages.push(alert); // add alert
     setTimeout(() => {

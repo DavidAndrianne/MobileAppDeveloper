@@ -4,7 +4,9 @@
     <h1>
       Welcome to {{title}}!
     </h1>
-    <alert *ngFor="let alertMessage of alertMessages" type="{{alertMessage.type}}" (click)="handleClickAlert(alertMessage)">{{alertMessage.text}}</alert>
+    <div class="alert-container">
+      <alert *ngFor="let alertMessage of alertMessages" type="{{alertMessage.type}}" dismissible="true">{{alertMessage.text}}</alert>
+    </div>
   </div>
   <div class="row stats">
     <div class="col-xs-3">

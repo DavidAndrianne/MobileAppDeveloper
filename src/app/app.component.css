@@ -11,6 +11,10 @@ div.main {
 
 }
 
+.alert-container{
+    float:right;
+}
+
 .glyphicon-question-sign{
     color : #31708f;
 }
