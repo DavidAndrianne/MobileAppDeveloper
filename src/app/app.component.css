@@ -12,7 +12,9 @@ div.main {
 }
 
 .alert-container{
-    float:right;
+    position: fixed;
+    top: 3%;
+    right: 3%;
 }
 
 .glyphicon-question-sign{

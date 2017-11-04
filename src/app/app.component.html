@@ -5,7 +5,10 @@
       Welcome to {{title}}!
     </h1>
     <div class="alert-container">
-      <alert *ngFor="let alertMessage of alertMessages" type="{{alertMessage.type}}" dismissible="true">{{alertMessage.text}}</alert>
+      <div *ngFor="let alertMessage of alertMessages" style="padding: 20px 0">
+        <span class="alert" [ngClass]="'alert-'+alertMessage.type" (click)="handleClickAlert(alertMessage)">{{alertMessage.text}}</span>
+        <!-- not yet compatible with Ng5 <alert  type="{{alertMessage.type}}" dismissible="true">{{alertMessage.text}}</alert> -->
+      </div>
     </div>
   </div>
   <div class="row stats">

@@ -1,6 +1,6 @@
 import { browser, by, element } from 'protractor';
 
-export class Angular4ClickerPage {
+export class Angular5ClickerPage {
   navigateTo() {
     return browser.get('/');
   }
