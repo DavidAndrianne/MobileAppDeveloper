@@ -60,14 +60,39 @@ export class MobileAppsComponent implements OnInit {
     if(this.progressionTracker.shortcutUpgradeLevel >= 1 && event.shiftKey && 1 <= +event.key && +event.key <= 3) 
         this.attemptToPublishApp.emit(+event.key -1);
     else { // if Shortcut Level 3+ & autopublish is on : auto-publish app
-        
-        let autoPublishApp = this.apps.find(app => {return app.isAutoPublished;});4
-        console.log("app to autoPublish : ", autoPublishApp);
+        let autoPublishApp = this.apps.find(app => {return app.isAutoPublished;});
         if(this.progressionTracker.shortcutUpgradeLevel >= 3 && autoPublishApp && autoPublishApp.cost <= this.codePower)
             this.attemptToPublishApp.emit(this.apps.indexOf(autoPublishApp));
     }
+
+    if(this.progressionTracker.shortcutUpgradeLevel >= 2 && this.konamiCode[this.konamiSelector] == event.keyCode)
+        this.konamiSelector++;
+    if(this.konamiSelector == this.konamiCode.length){
+        this.konamiSelector = 0;
+        this.progressionTracker.developpedApps.filter(appcounter => {
+            return appcounter.count >= 10
+        })
+        .forEach(appcounter => {
+            appcounter.app.isPromotable = true;
+        });
+    }
   }
 
+  // Keyboard shortcut level 2 upgrade : konami code promotion event
+  konamiCode = [38,38,40,40,37,39,37,39,66,65];
+  konamiSelector = 0;
+
+  checkIfPromoteUnlocked(app : MobileApp) {
+    let appCounter = this.progressionTracker.developpedApps.find(counter => counter.app.name == app.name);
+    if(!appCounter) return false;
+    return appCounter.count >= 10 && this.progressionTracker.shortcutUpgradeLevel >= 2;
+  }
+
+  @Output()
+  promoteApp = new EventEmitter<MobileApp>();
+  promote(app : MobileApp){ this.promoteApp.emit(app);}
+
+  // Keyboard Shortcut level 3 upgrade : autopublish app
   setAutoPublishApp(app: MobileApp){
       this.apps.filter(app => app.isAutoPublished)
                .forEach(app => app.isAutoPublished = false);

@@ -34,7 +34,7 @@ export class UpgradesComponent implements OnInit {
 
     // Shortcut
     <Upgrade>{ name:"shortcut", title:"Unlocks shortcut ctrl+1, ctrl+2, ... to quick release app clones", cost:1000, isUnlocked:true, tier:1, imageUrl: "/assets/Upgrades/keyboardShortcut_Tier1.png"},
-    <Upgrade>{ name:"shortcut", title:"Unlocks the konami code (Up, Up, Down, Down, Left, Right, Left, Right, A, B) which unlocks a stream event.", cost:4000, tier:2, imageUrl: "/assets/Upgrades/keyboardShortcut_Tier2.png"},
+    <Upgrade>{ name:"shortcut", title:"Unlocks the konami code (Up, Up, Down, Down, Left, Right, Left, Right, B, A) which unlocks a stream event.", cost:4000, tier:2, imageUrl: "/assets/Upgrades/keyboardShortcut_Tier2.png"},
     <Upgrade>{ name:"shortcut", title:"Unlocks autorelease for developped apps", cost:10000, tier:3, imageUrl: "/assets/Upgrades/keyboardShortcut_Tier3.png"},
   ];
   get tier1Upgrades() : Upgrade[] {

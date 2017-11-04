@@ -14,14 +14,14 @@ import { MobileAppsComponent } from 'app/mobile-apps/mobile-apps.component';
 export class AppComponent {
   title = 'Mobile developer';
   income = 0;
-  balance = 50000;
+  balance = 80000;
   alertMessages : AlertMessage[] = [];
   progressionTracker : ProgressionTracker = <ProgressionTracker>{developpedApps : [], keyboardUpgradeLevel: 0, addsUpgradeLevel: 0, contractUpgradeLevel: 0, shortcutUpgradeLevel: 0};
 
   @ViewChild(MobileAppsComponent) mobileAppsComponent : MobileAppsComponent;
 
   mobileAppCallback(app: MobileApp){
-      console.log("mobileAppCallback", "PARENT : Received app '"+app.name+"'!");
+      // console.log("mobileAppCallback", "PARENT : Received app '"+app.name+"'!");
       let devApp = this.progressionTracker.developpedApps.find(devApp => devApp.app.name == app.name);
       if(devApp) devApp.count++;
       else this.progressionTracker.developpedApps.push({app: app, count: 1});
@@ -35,20 +35,24 @@ export class AppComponent {
       if(app.isUnlocked){
         if(app.cost <= this.mobileAppsComponent.codePower){
           this.mobileAppsComponent.develop(app);
-          this.showInfo("You published a "+app.name+" clone!");
-        } else {
-          this.showWarning("Attempted to publish app "+app.name+" but insufficient code has been written!")
-        }
-      } else {
-       this.showWarning("Attempted to publish app "+app.name+" but this app is not yet unlocked! Publish earlier apps!"); 
-      }
-    } else {
-      this.showError("Attempted to publish app "+index+" but none was found!");
-    }
+          // this.showInfo("You published a "+app.name+" clone!");
+        } else this.showWarning("Attempted to publish app "+app.name+" but insufficient code has been written!")
+      } else this.showWarning("Attempted to publish app "+app.name+" but this app is not yet unlocked! Publish earlier apps!");
+    } else this.showError("Attempted to publish app "+index+" but none was found!");
   }
 
   incomeCallback(balance: number){
     this.balance = balance;
+  }
+  
+  promoteCallback(app:MobileApp){
+    let gains = app.income * this.progressionTracker.developpedApps.find(appCounter => {
+      return appCounter.app.name == app.name;
+    })
+    .count;
+    this.showSuccess("Your stream campaign accrued a total of $ " + gains + "!");
+    this.balance += gains;
+    app.isPromotable = false;
   }
 
   unlockUpgradeCallback(upgrade: Upgrade){

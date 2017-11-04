@@ -7,7 +7,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 2. Button to "write code" [OK]
 3. Keyboard publish shortcut upgrade [OK]
 4. Keyboard auto-publish feature [OK]
-5. Konami shortcut : unlock twitch minigame
+5. Konami shortcut : unlock stream minigame [OK]
 6. Snake sample
 7. Hearthstone sample
 8. Perudo sample
