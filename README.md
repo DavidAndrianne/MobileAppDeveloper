@@ -8,7 +8,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 3. Keyboard publish shortcut upgrade [OK]
 4. Keyboard auto-publish feature [OK]
 5. Konami shortcut : unlock stream minigame [OK]
-6. Snake sample
+6. Snake sample [OK]
 7. Hearthstone sample
 8. Perudo sample
 9. Level assertion
