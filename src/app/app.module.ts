@@ -9,13 +9,15 @@ import { MobileAppsComponent } from './mobile-apps/mobile-apps.component';
 import { AlertModule } from '../../node_modules/ngx-bootstrap';
 
 import { UpgradesComponent } from './upgrades/upgrades.component';
+import { SnakeEmulatorComponent } from './snake-emulator/snake-emulator.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MoneyComponent,
     MobileAppsComponent,
-    UpgradesComponent
+    UpgradesComponent,
+    SnakeEmulatorComponent
   ],
   imports: [
     BrowserModule,

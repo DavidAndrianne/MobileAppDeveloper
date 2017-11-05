@@ -12,11 +12,19 @@ import { MobileAppsComponent } from 'app/mobile-apps/mobile-apps.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  streamingApp: MobileApp;
+  isStreaming = false;
   title = 'Mobile developer';
   income = 0;
-  balance = 80000;
+  balance = 80000; //TODO: reset this
   alertMessages : AlertMessage[] = [];
-  progressionTracker : ProgressionTracker = <ProgressionTracker>{developpedApps : [], keyboardUpgradeLevel: 0, addsUpgradeLevel: 0, contractUpgradeLevel: 0, shortcutUpgradeLevel: 0};
+  progressionTracker : ProgressionTracker = <ProgressionTracker>{
+    developpedApps : [], 
+    keyboardUpgradeLevel: 3,  //TODO: reset this
+    addsUpgradeLevel: 0, 
+    contractUpgradeLevel: 0, 
+    shortcutUpgradeLevel: 3   //TODO: reset this
+  };
 
   @ViewChild(MobileAppsComponent) mobileAppsComponent : MobileAppsComponent;
 
@@ -46,13 +54,25 @@ export class AppComponent {
   }
   
   promoteCallback(app:MobileApp){
-    let gains = app.income * this.progressionTracker.developpedApps.find(appCounter => {
-      return appCounter.app.name == app.name;
+    this.isStreaming = true;
+    this.streamingApp = app;
+  }
+
+  promotionSuccessCallback(message: string){
+    let gains = this.streamingApp.income * this.progressionTracker.developpedApps.find(appCounter => {
+      return appCounter.app.name == this.streamingApp.name;
     })
     .count;
-    this.showSuccess("Your stream campaign accrued a total of $ " + gains + "!");
+    this.showSuccess("Your stream campaign for '" + this.streamingApp.name + " Clone' accrued a total of $ " + gains + "!");
     this.balance += gains;
-    app.isPromotable = false;
+    this.streamingApp.isPromotable = false;
+    this.isStreaming = false;
+  }
+
+  promotionDefeatCallback(message: string){
+    this.showInfo("Your stream campaign ended but unfortunately you suck so no $! ("+message+")");
+    this.streamingApp.isPromotable = false;
+    this.isStreaming = false;
   }
 
   unlockUpgradeCallback(upgrade: Upgrade){

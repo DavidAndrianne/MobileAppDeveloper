@@ -16,7 +16,10 @@
         <money [(income)]="income" [(balance)]="balance" [(progressionTracker)]="progressionTracker" (addIncome)="incomeCallback($event)"></money>
     </div>
   </div>
-  <div class="row development">
+  <div *ngIf="streamingApp && isStreaming" class="row streaming">
+    <snake-emulator *ngIf="streamingApp?.name == 'Snake'" (victory)="promotionSuccessCallback($event)" (defeat)="promotionDefeatCallback($event)"></snake-emulator>
+  </div>
+  <div *ngIf="!isStreaming" class="row development">
     <!-- angular app anchor -->
     <mobile-apps 
       [developerIncome]="income" 
@@ -25,7 +28,7 @@
       (attemptToPublishApp)="attemptToPublishAppCallback($event)" 
       (promoteApp)="promoteCallback($event)"></mobile-apps>
   </div>
-  <div class="row upgrades">
+  <div class="row upgrades" [hidden]="isStreaming">
       <upgrades [(balance)]="balance" (unlockUpgrade)="unlockUpgradeCallback($event)" [(progressionTracker)]="progressionTracker"></upgrades>
   </div>
   <div class="footer">

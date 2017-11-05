@@ -70,10 +70,11 @@ export class MobileAppsComponent implements OnInit {
     if(this.konamiSelector == this.konamiCode.length){
         this.konamiSelector = 0;
         this.progressionTracker.developpedApps.filter(appcounter => {
-            return appcounter.count >= 10
+        console.log("enabling app", appcounter);
+        return appcounter.count >= 1//0
         })
         .forEach(appcounter => {
-            appcounter.app.isPromotable = true;
+            this.apps.find(app => app.name == appcounter.app.name).isPromotable = true;
         });
     }
   }
@@ -85,7 +86,7 @@ export class MobileAppsComponent implements OnInit {
   checkIfPromoteUnlocked(app : MobileApp) {
     let appCounter = this.progressionTracker.developpedApps.find(counter => counter.app.name == app.name);
     if(!appCounter) return false;
-    return appCounter.count >= 10 && this.progressionTracker.shortcutUpgradeLevel >= 2;
+    return /*appCounter.count >= 10 &&*/ this.progressionTracker.shortcutUpgradeLevel >= 2;
   }
 
   @Output()
