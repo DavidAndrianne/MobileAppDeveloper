@@ -51,7 +51,8 @@ export class SnakeEmulatorComponent implements OnInit {
 
       this.drawBoard();
       this.context.fillStyle = "#FFF";
-      this.context.fillText("Use the arrow keys to move, press space to start...", this.maxWidth/4, this.maxHeight/1.1, this.maxWidth/2);
+      this.context.fillText("Use the arrow keys to move", this.maxWidth/4, this.maxHeight/1.1);
+      this.context.fillText("Press space to start...", this.maxWidth/4, this.maxHeight/2);
     } else console.error("Snake canvas could not be loaded!");
   }
 

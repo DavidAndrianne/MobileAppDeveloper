@@ -18,7 +18,7 @@ export class AppComponent {
   income = 0;
   balance = 80000; //TODO: reset this
   alertMessages : AlertMessage[] = [];
-  progressionTracker : ProgressionTracker = <ProgressionTracker>{
+  progressionTracker = <ProgressionTracker>{
     developpedApps : [], 
     keyboardUpgradeLevel: 3,  //TODO: reset this
     addsUpgradeLevel: 0, 
@@ -62,7 +62,7 @@ export class AppComponent {
     let gains = this.streamingApp.income * this.progressionTracker.developpedApps.find(appCounter => {
       return appCounter.app.name == this.streamingApp.name;
     })
-    .count;
+    .count * 100;
     this.showSuccess("Your stream campaign for '" + this.streamingApp.name + " Clone' accrued a total of $ " + gains + "!");
     this.balance += gains;
     this.streamingApp.isPromotable = false;

@@ -1,0 +1,73 @@
+.card {
+    min-width: 200px;
+    min-height: 270px;
+}
+
+.active-card {
+    filter: drop-shadow(0px 0px 20px cyan)
+}
+
+.card.too-expensive-card {
+    min-width: 100px;
+    min-height: 135px;
+    background-size: contain !important;
+}
+
+.ai-playback{
+    background: peachpuff;
+}
+
+.play-back-card {
+    min-width: 100px;
+    min-height: 135px;
+    background-size: contain !important;
+}
+
+.dead-target{
+    filter: drop-shadow(0px 0px 20px darkred)
+}
+
+.dead-target::after{
+    content: "x";
+    color:red;
+    position:relative;
+    font-size:85px;
+}
+
+/* The animation code */
+.flash {
+    -webkit-animation:spin 2s linear 1; /* updated to spin */
+    -moz-animation:spin 2s linear 1; /* updated to spin */
+    animation:spin 2s linear 1; /* updated to spin */
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+@-moz-keyframes flash {
+    0%   {background-color: red !important; background: unset !important}
+    25%  {background-color: yellow !important; background: unset !important}
+    50%  {background-color: blue !important; background: unset !important}
+    100% {background-color: green !important; background: unset !important}
+}
+@keyframes flash {
+    0%   {background-color: red !important; background: unset !important}
+    25%  {background-color: yellow !important; background: unset !important}
+    50%  {background-color: blue !important; background: unset !important}
+    100% {background-color: green !important; background: unset !important}
+}
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes flash {
+    0%   {background-color: red !important; background: unset !important}
+    25%  {background-color: yellow !important; background: unset !important}
+    50%  {background-color: blue !important; background: unset !important}
+    100% {background-color: green !important; background: unset !important}
+}
+
+/*
+    -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+/*    -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+/*    animation-name: example;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+}*/

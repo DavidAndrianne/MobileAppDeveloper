@@ -10,6 +10,9 @@ import { AlertModule } from '../../node_modules/ngx-bootstrap';
 
 import { UpgradesComponent } from './upgrades/upgrades.component';
 import { SnakeEmulatorComponent } from './snake-emulator/snake-emulator.component';
+import { HearthstoneEmulatorComponent } from './hearthstone-emulator/hearthstone-emulator.component';
+import { HeroPortraitComponent } from './hearthstone-emulator/hero-portrait/hero-portrait.component';
+import { MonsterlaneComponent } from './hearthstone-emulator/monsterlane/monsterlane.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,10 @@ import { SnakeEmulatorComponent } from './snake-emulator/snake-emulator.componen
     MoneyComponent,
     MobileAppsComponent,
     UpgradesComponent,
-    SnakeEmulatorComponent
+    SnakeEmulatorComponent,
+    HearthstoneEmulatorComponent,
+    HeroPortraitComponent,
+    MonsterlaneComponent
   ],
   imports: [
     BrowserModule,

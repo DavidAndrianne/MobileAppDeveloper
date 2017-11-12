@@ -18,6 +18,7 @@
   </div>
   <div *ngIf="streamingApp && isStreaming" class="row streaming">
     <snake-emulator *ngIf="streamingApp?.name == 'Snake'" (victory)="promotionSuccessCallback($event)" (defeat)="promotionDefeatCallback($event)"></snake-emulator>
+    <hearthstone-emulator *ngIf="streamingApp?.name == 'Hearthstone'" (victory)="promotionSuccessCallback($event)" (defeat)="promotionDefeatCallback($event)"></hearthstone-emulator>
   </div>
   <div *ngIf="!isStreaming" class="row development">
     <!-- angular app anchor -->

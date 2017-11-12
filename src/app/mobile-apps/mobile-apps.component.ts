@@ -7,8 +7,8 @@ import { ProgressionTracker } from 'app/domain/progression-tracker';
   styleUrls: ['./mobile-apps.component.css']
 })
 export class MobileAppsComponent implements OnInit {
-  apps = <MobileApp[]>[<MobileApp>{name: 'Snake', thumbnailUrl:'Snake.png', income: 1, cost: 20, isAutoPublished: false},
-  <MobileApp>{name: 'Hearthstone', thumbnailUrl:'Hearthstone.jpg', income: 11, cost: 200, isAutoPublished: false},
+  apps = <MobileApp[]>[<MobileApp>{name: 'Snake', thumbnailUrl:'snake.png', income: 1, cost: 20, isAutoPublished: false},
+  <MobileApp>{name: 'Hearthstone', thumbnailUrl:'hearthstone.jpg', income: 11, cost: 200, isAutoPublished: false},
   <MobileApp>{name: 'Perudo', thumbnailUrl:'perudo.png', income: 58, cost: 1000, isAutoPublished: false}];
 
   @Input()
@@ -22,7 +22,11 @@ export class MobileAppsComponent implements OnInit {
   constructor() { }
   
   ngOnInit() {
-      this.apps[0].isUnlocked = true; // The first app is always unlocked by default
+    this.apps[0].isUnlocked = true; // The first app is always unlocked by default
+    this.progressionTracker.developpedApps.forEach(appCounter => {
+        if(appCounter.count > 0)
+            this.apps.find(app => app.name == appCounter.app.name).isUnlocked = true;
+    });
   }
   
   develop(app) {

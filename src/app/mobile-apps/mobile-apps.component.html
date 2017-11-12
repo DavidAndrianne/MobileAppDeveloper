@@ -6,7 +6,7 @@
             <button [disabled]="app.cost > codePower" 
                 [ngClass]="{'appBtnDisabled':app.cost > codePower}" 
                 style="min-width: 100px; min-height: 100px" 
-                [ngStyle]="{'background': 'url(/assets/MobileAppThumbnails/'+app.thumbnailUrl+')'}" 
+                [ngStyle]="{'background': 'url(/assets/mobile-app-thumbnails/'+app.thumbnailUrl+')'}" 
                 (click)="develop(app)" 
                 title="Develop a {{app.name}} clone (income: $ {{app.income}})">{{(codePower / app.cost * 100).toFixed(2)}} %</button>
             <input *ngIf="this.progressionTracker.shortcutUpgradeLevel >= 3" type="checkbox" 
