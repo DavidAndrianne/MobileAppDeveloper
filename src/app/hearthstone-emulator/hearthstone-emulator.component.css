@@ -4,7 +4,7 @@
 }
 
 .active-card {
-    filter: drop-shadow(0px 0px 20px cyan)
+    filter: drop-shadow(0px 0px 20px cyan);
 }
 
 .card.too-expensive-card {
@@ -63,11 +63,3 @@
     50%  {background-color: blue !important; background: unset !important}
     100% {background-color: green !important; background: unset !important}
 }
-
-/*
-    -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
-/*    -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
-/*    animation-name: example;
-    animation-duration: 4s;
-    animation-iteration-count: infinite;
-}*/

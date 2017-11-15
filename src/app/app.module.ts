@@ -13,6 +13,7 @@ import { SnakeEmulatorComponent } from './snake-emulator/snake-emulator.componen
 import { HearthstoneEmulatorComponent } from './hearthstone-emulator/hearthstone-emulator.component';
 import { HeroPortraitComponent } from './hearthstone-emulator/hero-portrait/hero-portrait.component';
 import { MonsterlaneComponent } from './hearthstone-emulator/monsterlane/monsterlane.component';
+import { PerudoEmulatorComponent } from './perudo-emulator/perudo-emulator.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { MonsterlaneComponent } from './hearthstone-emulator/monsterlane/monster
     SnakeEmulatorComponent,
     HearthstoneEmulatorComponent,
     HeroPortraitComponent,
-    MonsterlaneComponent
+    MonsterlaneComponent,
+    PerudoEmulatorComponent
   ],
   imports: [
     BrowserModule,

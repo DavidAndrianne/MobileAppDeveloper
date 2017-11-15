@@ -33,7 +33,7 @@ export class UpgradesComponent implements OnInit {
     <Upgrade>{ name:"contract", title:"Secure a more frequent payout from the add company. 2.5x quicker income from adds", cost:50000, tier:3, imageUrl: "/assets/upgrades/contract_Tier3.png"},
 
     // Shortcut
-    <Upgrade>{ name:"shortcut", title:"Unlocks shortcut ctrl+1, ctrl+2, ... to quick release app clones", cost:1000, isUnlocked:true, tier:1, imageUrl: "/assets/upgrades/keyboardShortcut_Tier1.png"},
+    <Upgrade>{ name:"shortcut", title:"Unlocks shortcut shift+1, shift+2, ... to quick release app clones", cost:1000, isUnlocked:true, tier:1, imageUrl: "/assets/upgrades/keyboardShortcut_Tier1.png"},
     <Upgrade>{ name:"shortcut", title:"Unlocks the konami code (Up, Up, Down, Down, Left, Right, Left, Right, B, A) which unlocks a stream event.", cost:4000, tier:2, imageUrl: "/assets/upgrades/keyboardShortcut_Tier2.png"},
     <Upgrade>{ name:"shortcut", title:"Unlocks autorelease for developped apps", cost:10000, tier:3, imageUrl: "/assets/upgrades/keyboardShortcut_Tier3.png"},
   ];
@@ -53,6 +53,19 @@ export class UpgradesComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    let upgradeLevels = [{name: "adds", level: this.progressionTracker.addsUpgradeLevel},
+                    {name: "contract", level: this.progressionTracker.contractUpgradeLevel},
+                    {name: "keyboard", level: this.progressionTracker.keyboardUpgradeLevel},
+                    {name: "shortcut", level: this.progressionTracker.shortcutUpgradeLevel} ];
+    this.upgrades.forEach(upgrade => {
+      let level = upgradeLevels.find(level => level.name == upgrade.name);
+      if(level.level >= upgrade.tier){
+        upgrade.isBought = true;
+        upgrade.isUnlocked;
+      } else if(level.level-1 == upgrade.tier) {
+        upgrade.isUnlocked = true;
+      }
+    });
   }
 
   buyUpgrade(upgrade : Upgrade){

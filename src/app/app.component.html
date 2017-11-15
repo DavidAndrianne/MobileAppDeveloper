@@ -12,13 +12,14 @@
     </div>
   </div>
   <div class="row stats">
-    <div class="col-xs-3">
+    <div class="col-xs-4">
         <money [(income)]="income" [(balance)]="balance" [(progressionTracker)]="progressionTracker" (addIncome)="incomeCallback($event)"></money>
     </div>
   </div>
   <div *ngIf="streamingApp && isStreaming" class="row streaming">
     <snake-emulator *ngIf="streamingApp?.name == 'Snake'" (victory)="promotionSuccessCallback($event)" (defeat)="promotionDefeatCallback($event)"></snake-emulator>
     <hearthstone-emulator *ngIf="streamingApp?.name == 'Hearthstone'" (victory)="promotionSuccessCallback($event)" (defeat)="promotionDefeatCallback($event)"></hearthstone-emulator>
+    <perudo-emulator *ngIf="streamingApp?.name == 'Perudo'" (victory)="promotionSuccessCallback($event)" (defeat)="promotionDefeatCallback($event)"></perudo-emulator>
   </div>
   <div *ngIf="!isStreaming" class="row development">
     <!-- angular app anchor -->

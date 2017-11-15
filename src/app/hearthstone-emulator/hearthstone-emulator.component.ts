@@ -62,7 +62,7 @@ export class HearthstoneEmulatorComponent implements OnInit {
     if(this.cardBeingPlayed != undefined && this.cardBeingPlayed instanceof CreatureCard 
       && this.cardBeingPlayed.isInPlay)
     {
-      if(card instanceof CreatureCard)
+      if(card instanceof CreatureCard && card != this.cardBeingPlayed)
         this.playCard(this.cardBeingPlayed, [card]);
       return undefined;
     }

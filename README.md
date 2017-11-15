@@ -10,8 +10,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 5. Konami shortcut : unlock stream minigame [OK]
 6. Snake sample [OK]
 7. Hearthstone sample [OK]
-8. Perudo sample
+8. Perudo sample [OK]
 9. Level assertion
+10. ???
 
 ## Development server
 

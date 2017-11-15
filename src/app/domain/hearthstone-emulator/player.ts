@@ -45,7 +45,7 @@ export class AiPlayer extends Player {
         let possibleTargets = opponent.creatureRow.concat(opponent.hero)
                                                   .filter(target => target.currentHealth > 0);
         let cardIndex = Math.floor(Math.random()*possibleTargets.length);
-        console.log("selected target", possibleTargets[cardIndex]);
+        // console.log("selected target", possibleTargets[cardIndex]);
         return possibleTargets[cardIndex];
     }
 
@@ -57,7 +57,7 @@ export class AiPlayer extends Player {
         let possibleActions = possibleSpells.concat(possibleAttacks);
         if(possibleActions.length == 0) return undefined;
         let cardIndex = Math.floor(Math.random()*possibleActions.length);
-        console.log("selected action", possibleActions[cardIndex]);
+        // console.log("selected action", possibleActions[cardIndex]);
         return possibleActions[cardIndex];
     }
 }
