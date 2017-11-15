@@ -62,7 +62,7 @@ export class AppComponent {
     let gains = this.streamingApp.income * this.progressionTracker.developpedApps.find(appCounter => {
       return appCounter.app.name == this.streamingApp.name;
     })
-    .count * 100;
+    .count * 10;
     this.showSuccess("Your stream campaign for '" + this.streamingApp.name + " Clone' accrued a total of $ " + gains + "!");
     this.balance += gains;
     this.streamingApp.isPromotable = false;
