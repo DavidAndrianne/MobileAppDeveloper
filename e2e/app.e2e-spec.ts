@@ -1,14 +1,14 @@
-import { Angular5ClickerPage } from './app.po';
+import { AngularCliHerokuPage } from './app.po';
 
-describe('Angular5-clicker App', () => {
-  let page: Angular5ClickerPage;
+describe('angular-cli-heroku App', () => {
+  let page: AngularCliHerokuPage;
 
   beforeEach(() => {
-    page = new Angular5ClickerPage();
+    page = new AngularCliHerokuPage();
   });
 
-  it('should display welcome message', () => {
+  it('should display message saying app works', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!!');
+    expect(page.getParagraphText()).toEqual('app works!');
   });
 });
