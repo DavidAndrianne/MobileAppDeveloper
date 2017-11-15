@@ -1,6 +1,6 @@
-import { browser, element, by } from 'protractor';
+import { browser, by, element } from 'protractor';
 
-export class AngularCliHerokuPage {
+export class Angular5ClickerPage {
   navigateTo() {
     return browser.get('/');
   }
