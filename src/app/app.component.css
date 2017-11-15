@@ -1,0 +1,22 @@
+div.main {
+    margin: 0 10%;
+    padding-left: 5px;
+}
+
+.stats {
+    
+}
+
+.development {
+
+}
+
+.alert-container{
+    position: fixed;
+    top: 3%;
+    right: 3%;
+}
+
+.glyphicon-question-sign{
+    color : #31708f;
+}

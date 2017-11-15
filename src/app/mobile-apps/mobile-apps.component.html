@@ -1,0 +1,33 @@
+<h2>Publish apps <span class="glyphicon glyphicon-question-sign" title="Publishing apps is the action of converting code into apps, which provides you with passive income"></span></h2>
+<div class="row app-container" style="min-height: 100px">
+    <div *ngFor="let app of apps" class="col-xs-1">
+        <div *ngIf="app.isUnlocked">
+            <button *ngIf="checkIfPromoteUnlocked(app)" [disabled]="!app.isPromotable" class="promoteBtn btn btn-info" (click)="promote(app)">Promote</button>
+            <button [disabled]="app.cost > codePower" 
+                [ngClass]="{'appBtnDisabled':app.cost > codePower}" 
+                style="min-width: 100px; min-height: 100px" 
+                [ngStyle]="{'background': 'url(/assets/mobile-app-thumbnails/'+app.thumbnailUrl+')'}" 
+                (click)="develop(app)" 
+                title="Develop a {{app.name}} clone (income: $ {{app.income}})">{{(codePower / app.cost * 100).toFixed(2)}} %</button>
+            <input *ngIf="this.progressionTracker.shortcutUpgradeLevel >= 3" type="checkbox" 
+                    title="autopublish {{app.name}}" (click)="setAutoPublishApp(app)" [(ngModel)]="app.isAutoPublished"/>
+            <!-- <pre>'{{app.isAutoPublished}}'</pre> -->
+        </div>
+    </div>
+</div>
+<div class="console">
+    <h2>Write your app below <span class="glyphicon glyphicon-question-sign" title="try typing something... ;D"></span></h2>
+    <div *ngIf="progressionTracker.shortcutUpgradeLevel >= 2" class="konami">
+        <span class="glyphicon glyphicon-arrow-up" [ngClass]="{'alert-success':konamiSelector>0}"></span>
+        <span class="glyphicon glyphicon-arrow-up" [ngClass]="{'alert-success':konamiSelector>1}"></span>
+        <span class="glyphicon glyphicon-arrow-down" [ngClass]="{'alert-success':konamiSelector>2}"></span>
+        <span class="glyphicon glyphicon-arrow-down" [ngClass]="{'alert-success':konamiSelector>3}"></span>
+        <span class="glyphicon glyphicon-arrow-left" [ngClass]="{'alert-success':konamiSelector>4}"></span>
+        <span class="glyphicon glyphicon-arrow-right" [ngClass]="{'alert-success':konamiSelector>5}"></span>
+        <span class="glyphicon glyphicon-arrow-left" [ngClass]="{'alert-success':konamiSelector>6}"></span>
+        <span class="glyphicon glyphicon-arrow-right" [ngClass]="{'alert-success':konamiSelector>7}"></span>
+        <span style="font-family: comic-sans" [ngClass]="{'alert-success':konamiSelector>8}">B</span>
+        <span style="font-family: comic-sans" [ngClass]="{'alert-success':konamiSelector>9}">A</span>
+        </div>
+    <textarea style="min-width: 300px; min-height: 200px" disabled (onKeyUp)="writeCode()">{{codeToShow}}</textarea>
+</div>
