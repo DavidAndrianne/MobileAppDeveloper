@@ -1,28 +1,26 @@
-# Angular-CLI-Heroku
+# MobileAppDeveloper
+A sample cookie clicker made in Angular(TypeScript)
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.1.2.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.1.
-
-## Yarn
-
-Run `npm install -g yarn` then `yarn install`.
-
-If you want to use npm instead of yarn, change the yarn declaraction inside package.json for `npm : "3.10.9"` and delete `yarn.lock`.
+# TODO:
+1. Timer to add passive income [OK]
+2. Button to "write code" [OK]
+3. Keyboard publish shortcut upgrade [OK]
+4. Keyboard auto-publish feature [OK]
+5. Konami shortcut : unlock stream minigame [OK]
+6. Snake sample [OK]
+7. Hearthstone sample [OK]
+8. Perudo sample [OK]
+9. Level assertion
+10. ???
 
 ## Development server
 
-Run `ng serve` or `npm run dev` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|module`.
-
-## Deploy on Heroku
-
-First you need heroku toolbelt `https://devcenter.heroku.com/articles/heroku-cli#download-and-instal`.
-
-Run `heroku create` to create a new application on Heroku.
-
-Run `npm run deploy` Heroku will handle the bundle of the application to `dist/` folder and run it via express.
 
 ## Build
 
