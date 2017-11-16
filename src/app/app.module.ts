@@ -6,8 +6,6 @@ import { AppComponent } from './app.component';
 import { MoneyComponent } from './money/money.component';
 import { MobileAppsComponent } from './mobile-apps/mobile-apps.component';
 
-import { AlertModule } from '../../node_modules/ngx-bootstrap';
-
 import { UpgradesComponent } from './upgrades/upgrades.component';
 import { SnakeEmulatorComponent } from './snake-emulator/snake-emulator.component';
 import { HearthstoneEmulatorComponent } from './hearthstone-emulator/hearthstone-emulator.component';
@@ -29,8 +27,7 @@ import { PerudoEmulatorComponent } from './perudo-emulator/perudo-emulator.compo
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    AlertModule.forRoot()
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
