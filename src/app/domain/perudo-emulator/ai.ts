@@ -2,18 +2,22 @@ import { PerudoGame } from "app/domain/perudo-emulator/perudo-game";
 import { Bid } from "app/domain/perudo-emulator/bid";
 import { Player } from "app/domain/perudo-emulator/player";
 
-export enum ActionType{
-    openingBid = "openingBid",
-    raiseValue = "value",
-    raiseQuantity = "quantity",
-    paco = "paco",
-
-    bullshit = "bullshit",
-    unknown = "unknown"
+/**
+ * Workaround attempt #2 at creating an enumlike "static class" 
+ * with strings as returned values
+ */
+export class ActionType{
+    static get openingBid() : string { return "opening bid"; }
+    static get raiseValue() : string { return "value"; }
+    static get raiseQuantity() : string { return "quantity"; }
+    static get paco() : string { return "paco"; }
+    
+    static get bullshit() : string { return "bullshit"; }
+    static get unknown() : string { return "unknown"; }
 }
 
 export class AiAction{
-    type: ActionType;
+    type : string;
     playerWhoLostDie: Player;
 
     /**

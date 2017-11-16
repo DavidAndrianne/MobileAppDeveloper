@@ -1,11 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { MoneyComponent } from './money/money.component';
 import { MobileAppsComponent } from './mobile-apps/mobile-apps.component';
+
 import { UpgradesComponent } from './upgrades/upgrades.component';
 import { SnakeEmulatorComponent } from './snake-emulator/snake-emulator.component';
 import { HearthstoneEmulatorComponent } from './hearthstone-emulator/hearthstone-emulator.component';
@@ -27,10 +27,10 @@ import { PerudoEmulatorComponent } from './perudo-emulator/perudo-emulator.compo
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    HttpModule
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+}
