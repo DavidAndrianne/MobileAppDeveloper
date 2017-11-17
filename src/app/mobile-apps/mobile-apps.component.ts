@@ -36,6 +36,10 @@ export class MobileAppsComponent implements OnInit {
     this.codePower -= app.cost; // reduce dev power
     this.getIncomeChange.emit(app); // get income
   }
+
+  round(input: number, decimals: number){
+      return input.toFixed(decimals);
+  }
   
   // Fired when a user types any key on the page
   // Will show 3 random chars from a pre-defined code sample and gives the developer a choice to release

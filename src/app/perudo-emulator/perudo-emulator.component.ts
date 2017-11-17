@@ -22,7 +22,7 @@ export class PerudoEmulatorComponent implements OnInit {
   action : AiAction;
   bullshittedBid : Bid;
   get isBullshit() : boolean{
-    let bullshit = (!this.action) ? false : this.action.type == ActionType.bullshit();
+    let bullshit = (!this.action) ? false : this.action.type == ActionType.bullshit;
     return bullshit;
   }
   rerollInSec = 0;
@@ -67,7 +67,7 @@ export class PerudoEmulatorComponent implements OnInit {
   }
 
   bullshit(){
-    this.action.type = ActionType.bullshit();
+    this.action.type = ActionType.bullshit;
     this.bullshittedBid = this.app.currentBid;
     this.action.playerWhoLostDie = this.app.bullshit();
     this.autoReroll();

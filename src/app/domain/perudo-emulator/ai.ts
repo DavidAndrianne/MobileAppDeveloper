@@ -3,17 +3,17 @@ import { Bid } from "app/domain/perudo-emulator/bid";
 import { Player } from "app/domain/perudo-emulator/player";
 
 /**
- * Workaround to having an enum/static class that returns strings
- * https://stackoverflow.com/questions/13212521/typescript-static-classes
+ * Workaround attempt #2 at creating an enumlike "static class" 
+ * with strings as returned values
  */
-export namespace ActionType{
-    export function openingBid() : string { return "opening bid"; }
-    export function raiseValue() : string { return "value"; }
-    export function raiseQuantity() : string { return "quantity"; }
-    export function paco() : string { return "paco"; }
+export class ActionType{
+    static get openingBid() : string { return "opening bid"; }
+    static get raiseValue() : string { return "value"; }
+    static get raiseQuantity() : string { return "quantity"; }
+    static get paco() : string { return "paco"; }
     
-    export function bullshit() : string { return "bullshit"; }
-    export function unknown() : string { return "unknown"; }
+    static get bullshit() : string { return "bullshit"; }
+    static get unknown() : string { return "unknown"; }
 }
 
 export class AiAction{
@@ -24,11 +24,11 @@ export class AiAction{
      * Deduces the aiAction taken based of the game and the accepted bid
      */
     constructor(game: PerudoGame, isOpeningBid: boolean, acceptedBid?: Bid) {
-        if(isOpeningBid) this.type = ActionType.openingBid();
-        else if(!acceptedBid) this.type = ActionType.bullshit();
-        else if(game.currentBid.value > acceptedBid.value) this.type = ActionType.raiseValue();
-        else if(game.currentBid.quantity > acceptedBid.quantity) this.type = ActionType.raiseQuantity();
-        else if(game.currentBid.isPaco) this.type = ActionType.paco();
-        else this.type = ActionType.unknown();
+        if(isOpeningBid) this.type = ActionType.openingBid;
+        else if(!acceptedBid) this.type = ActionType.bullshit;
+        else if(game.currentBid.value > acceptedBid.value) this.type = ActionType.raiseValue;
+        else if(game.currentBid.quantity > acceptedBid.quantity) this.type = ActionType.raiseQuantity;
+        else if(game.currentBid.isPaco) this.type = ActionType.paco;
+        else this.type = ActionType.unknown;
     }
 }

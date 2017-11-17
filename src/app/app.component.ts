@@ -16,14 +16,14 @@ export class AppComponent {
   isStreaming = false;
   title = 'Mobile developer';
   income = 0;
-  balance = 80000; //TODO: reset this
+  balance = 0;
   alertMessages : AlertMessage[] = [];
   progressionTracker = <ProgressionTracker>{
     developpedApps : [], 
-    keyboardUpgradeLevel: 3,  //TODO: reset this
+    keyboardUpgradeLevel: 0, 
     addsUpgradeLevel: 0, 
     contractUpgradeLevel: 0, 
-    shortcutUpgradeLevel: 3   //TODO: reset this
+    shortcutUpgradeLevel: 0
   };
 
   @ViewChild(MobileAppsComponent) mobileAppsComponent : MobileAppsComponent;

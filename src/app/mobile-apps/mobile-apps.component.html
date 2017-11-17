@@ -8,10 +8,9 @@
                 style="min-width: 100px; min-height: 100px" 
                 [ngStyle]="{'background': 'url(/assets/mobile-app-thumbnails/'+app.thumbnailUrl+')'}" 
                 (click)="develop(app)" 
-                title="Develop a {{app.name}} clone (income: $ {{app.income}})">{{(codePower / app.cost * 100).toFixed(2)}} %</button>
+                title="Develop a {{app.name}} clone (income: $ {{app.income}})">{{round(codePower / app.cost * 100, 2)}} %</button>
             <input *ngIf="this.progressionTracker.shortcutUpgradeLevel >= 3" type="checkbox" 
                     title="autopublish {{app.name}}" (click)="setAutoPublishApp(app)" [(ngModel)]="app.isAutoPublished"/>
-            <!-- <pre>'{{app.isAutoPublished}}'</pre> -->
         </div>
     </div>
 </div>
@@ -29,5 +28,5 @@
         <span style="font-family: comic-sans" [ngClass]="{'alert-success':konamiSelector>8}">B</span>
         <span style="font-family: comic-sans" [ngClass]="{'alert-success':konamiSelector>9}">A</span>
         </div>
-    <textarea style="min-width: 300px; min-height: 200px" disabled (onKeyUp)="writeCode()">{{codeToShow}}</textarea>
+    <textarea style="min-width: 300px; min-height: 200px" disabled>{{codeToShow}}</textarea>
 </div>
